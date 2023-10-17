@@ -1,0 +1,11 @@
+{
+  "$schema": "https://wails.io/schemas/config.v2.json",
+  "name": "hospital",
+  "outputfilename": "hospital",
+  "frontend:install": "npm install",
+  "frontend:build": "npm run build",
+  "author": {
+    "name": "createitv",
+    "email": "xfy150150@163.com"
+  }
+}
