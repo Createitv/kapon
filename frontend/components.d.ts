@@ -7,9 +7,13 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
-    HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
-    NButton: typeof import('naive-ui')['NButton']
-    NIcon: typeof import('naive-ui')['NIcon']
-    NSpace: typeof import('naive-ui')['NSpace']
+    ElIcon: typeof import('element-plus/es')['ElIcon']
+    ElMenu: typeof import('element-plus/es')['ElMenu']
+    ElMenuItem: typeof import('element-plus/es')['ElMenuItem']
+    ElSubMenu: typeof import('element-plus/es')['ElSubMenu']
+    ElUpload: typeof import('element-plus/es')['ElUpload']
+    ExcelFileUploader: typeof import('./src/components/ExcelFileUploader.vue')['default']
+    ExcelView: typeof import('./src/components/ExcelView.vue')['default']
+    NavHeader: typeof import('./src/components/navbar/NavHeader.vue')['default']
   }
 }
