@@ -51,11 +51,11 @@ jobs:
       - name: Creating project with a template
         run: |
           cd ..
-          wails init -n hospital -t https://github.com/Createitv/hospital
+          wails init -n hospitals -t https://github.com/Createitv/hospital
 
       - name: Build Release Files
         run: |
-          cd ../hospital
+          cd ../hospitals
           wails build
       
       - name: Copy build files (Windows)
@@ -63,13 +63,13 @@ jobs:
         shell: cmd # 在Windows中默认值是pwsh，也就是在运行 run 命令时使用 PowerShell
         run: |
           mkdir build\bin
-          copy ..\hospital\build\bin\* build\bin
+          copy ..\hospitals\build\bin\* build\bin
 
       - name: Copy build files (Linux)
         if: runner.os != 'Windows'
         run: |
           mkdir -p build/bin
-          cp -r ../hospital/build/bin/* build/bin/
+          cp -r ../hospitals/build/bin/* build/bin/
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
