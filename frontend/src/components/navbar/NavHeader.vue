@@ -13,6 +13,15 @@ const open1 = () => {
     showClose: true,
   })
 }
+const open2 = () => {
+  ElNotification({
+    title: '作者微信',
+    type: 'success',
+    message: h('i', { style: 'color: teal' }, `navalism1`),
+    duration: 3500,
+    showClose: true,
+  })
+}
 function handleSelect(key: string, keyPath: string[]) {
   console.log(key, keyPath)
 }
@@ -43,11 +52,11 @@ function handleSelect(key: string, keyPath: string[]) {
         </el-icon>
         系统版本
       </el-menu-item>
-      <el-menu-item index="2-2">
+      <el-menu-item index="2-2" @click="open2">
         <el-icon>
           <Notebook />
         </el-icon>
-        文件上传日志
+        联系作者
       </el-menu-item>
       <!-- <el-menu-item index="2-3">
         item three

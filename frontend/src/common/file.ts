@@ -461,6 +461,6 @@ export function ex() {
             "减少方式": ""
         }
     ]
-    dataToExcel(d, 'example')
+    dataToExcel(d, '测试文件')
     console.log("done")
 }

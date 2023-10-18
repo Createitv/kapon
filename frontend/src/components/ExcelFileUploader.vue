@@ -2,10 +2,18 @@
 import * as xlsx from 'xlsx'
 import { dataMerge, groupedData } from "../common/collection.ts";
 import { dataToExcel, ex } from "../common/file.ts";
+import { ElNotification } from 'element-plus'
 
-let excelData = {}
+var excelData = {}
 
 async function onChange(file) {
+  ElNotification({
+    title: '上传成功, 等待3s后台处理',
+    type: 'success',
+    duration: 3000,
+    showClose: true,
+  }),
+    console.log("Success")
   /**
    * 1. 使用原生api去读取好的文件
    */
@@ -69,10 +77,15 @@ function exportExcel() {
 function exportExcelEx() {
   ex()
 }
+const handleOnSuccess = () => [
+
+
+]
 </script>
 
 <template>
-  <el-upload action="#" :auto-upload="false" :on-change="onChange" :limit="10" drag accept=".xls,.xlsx" class="m-4 mt-10">
+  <el-upload action="#" :auto-upload="false" :on-change="onChange" :limit="10" drag accept=".xls,.xlsx"
+    :on-success="handleOnSuccess" class="m-4 mt-10">
     <el-icon class="el-icon--upload">
       <upload-filled />
     </el-icon>
@@ -84,5 +97,5 @@ function exportExcelEx() {
 
 
   <el-button type="primary" @click="exportExcel">导出Excel</el-button>
-  <el-button type="primary" @click="exportExcelEx">下载文件测试</el-button>
+  <el-button type="primary" @click="exportExcelEx">下载测试文件</el-button>
 </template>
