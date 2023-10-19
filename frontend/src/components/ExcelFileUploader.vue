@@ -74,10 +74,17 @@ function getHeaderRow(sheet) {
   return headers // 经过上方一波操作遍历，得到最终的第一行头数据
 }
 
-function sleep(delay) {
-  for (let t = Date.now(); Date.now() - t <= delay;) ;
+function sleep(n) {
+  let b = true
+  let timestamp = new Date().getTime()
+  while (b) {
+    if (new Date().getTime() - timestamp > n * 1000) {
+      b = false
+    } else {
+      b = true;
+    }
+  }
 }
-
 
 function exportExcel() {
   console.log(excelData['健康管理中心'], excelData)
@@ -86,7 +93,7 @@ function exportExcel() {
     console.log(key, excelWriteData)
     if (key !== '') {
       dataToExcel(excelWriteData, key)
-      sleep(350)
+      sleep(0.2)
     }
 
   })
