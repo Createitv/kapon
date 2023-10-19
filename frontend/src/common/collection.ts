@@ -1,5 +1,8 @@
 /** @format */
 
+import { useCofigStore } from '../store/config'
+/** @format */
+
 export function groupedData(data: any[], key: string) {
 	return data.reduce((result, item) => {
 		let usageDepartment = item[key]
@@ -466,6 +469,7 @@ export function groupedData(data: any[], key: string) {
 
 export function dataMerge(dataOne: any[]) {
 	let arrayMerge = []
+	const configStore = useCofigStore()
 	let rank = 1
 	const lastOneSum = {}
 	const remainKey = [
@@ -507,6 +511,10 @@ export function dataMerge(dataOne: any[]) {
 				rank += 1
 			} else if (remainKey[i] === '汇总') {
 				emptyObject[remainKey[i]] = 1
+				// 还有很多空的没法匹配
+			} else if (remainKey[i] === '使用部门') {
+				console.log(configStore.config[element[remainKey[i]]])
+				emptyObject[remainKey[i]] = configStore.config[element[remainKey[i]]]
 				// 如果key在已经有的数据中添加数据
 			} else if (keys.indexOf(remainKey[i]) !== -1) {
 				emptyObject[remainKey[i]] = element[remainKey[i]]
@@ -517,8 +525,8 @@ export function dataMerge(dataOne: any[]) {
 			// 汇总数据
 			if (i === remainKey.length - 1) {
 				lastOneSum['序号'] = rank
-				lastOneSum['固定资产编号'] = "总计"
-				lastOneSum['汇总'] = rank-1
+				lastOneSum['固定资产编号'] = '总计'
+				lastOneSum['汇总'] = rank - 1
 			}
 		}
 		arrayMerge.push(emptyObject)
