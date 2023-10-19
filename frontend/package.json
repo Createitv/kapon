@@ -13,11 +13,15 @@
 	},
 	"dependencies": {
 		"@element-plus/icons-vue": "^2.1.0",
-		"@handsontable/vue3": "^13.1.0",
 		"element-plus": "^2.4.0",
 		"handsontable": "^13.1.0",
+		"jspdf": "^2.5.1",
+		"jspdf-autotable": "^3.7.0",
 		"pinia": "^2.1.6",
 		"vue": "^3.3.4",
+		"vxe-table": "^4.5.13",
+		"vxe-table-plugin-export-pdf": "^3.1.0",
+		"xe-utils": "^3.5.13",
 		"xlsx": "^0.18.5"
 	},
 	"devDependencies": {

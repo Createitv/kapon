@@ -473,6 +473,7 @@ export function dataMerge(dataOne: any[]) {
 		'固定资产编号',
 		'固定资产名称',
 		'规格型号',
+		'增加方式',
 		'实盘数量',
 		'盘亏数量',
 		'使用状况（在用/闲置）',
@@ -516,7 +517,8 @@ export function dataMerge(dataOne: any[]) {
 			// 汇总数据
 			if (i === remainKey.length - 1) {
 				lastOneSum['序号'] = rank
-				lastOneSum['汇总'] = rank
+				lastOneSum['固定资产编号'] = "总计"
+				lastOneSum['汇总'] = rank-1
 			}
 		}
 		arrayMerge.push(emptyObject)

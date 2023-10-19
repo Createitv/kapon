@@ -14,7 +14,9 @@ declare module 'vue' {
     ElSubMenu: typeof import('element-plus/es')['ElSubMenu']
     ElUpload: typeof import('element-plus/es')['ElUpload']
     ExcelFileUploader: typeof import('./src/components/ExcelFileUploader.vue')['default']
-    ExcelView: typeof import('./src/components/ExcelView.vue')['default']
     NavHeader: typeof import('./src/components/navbar/NavHeader.vue')['default']
+  }
+  export interface ComponentCustomProperties {
+    vLoading: typeof import('element-plus/es')['ElLoadingDirective']
   }
 }

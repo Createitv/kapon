@@ -6,7 +6,6 @@ import NavHeader from './components/navbar/NavHeader.vue'
 <template>
   <NavHeader />
   <ExcelFileUploader />
-  <!--  <ExcelView></ExcelView>-->
 </template>
 
 <style scoped></style>
