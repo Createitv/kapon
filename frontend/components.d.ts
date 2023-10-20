@@ -16,6 +16,7 @@ declare module 'vue' {
     ElSelect: typeof import('element-plus/es')['ElSelect']
     ElSubMenu: typeof import('element-plus/es')['ElSubMenu']
     ElUpload: typeof import('element-plus/es')['ElUpload']
+    ExcelFileUploader: typeof import('./src/components/ExcelFileUploader.vue')['default']
     NavHeader: typeof import('./src/components/navbar/NavHeader.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
