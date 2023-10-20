@@ -14,6 +14,7 @@
 	"dependencies": {
 		"@element-plus/icons-vue": "^2.1.0",
 		"@vueuse/core": "^10.5.0",
+		"core-js": "^3.33.1",
 		"element-plus": "^2.4.0",
 		"exceljs": "^4.4.0",
 		"file-saver": "^2.0.5",
@@ -30,6 +31,7 @@
 		"xlsx": "^0.18.5"
 	},
 	"devDependencies": {
+		"@types/file-saver": "^2.0.6",
 		"@unocss/preset-wind": "^0.56.5",
 		"@vicons/ionicons5": "^0.12.0",
 		"@vitejs/plugin-vue": "^4.2.3",
