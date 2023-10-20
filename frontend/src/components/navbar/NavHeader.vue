@@ -28,16 +28,20 @@ function handleSelect(key: string, keyPath: string[]) {
 </script>
 
 <template>
-  <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" :ellipsis="false" @select="handleSelect">
+  <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" :ellipsis="false" @select="handleSelect" :router="true">
     <el-menu-item index="0" class="scale-60">
       <img class="" style="width: 100px" src="/src/assets/wails.png" alt="Element logo">
     </el-menu-item>
     <div class="flex-grow" />
-    <el-menu-item index="1">
+      <el-menu-item index="/home">
       <el-icon>
         <location />
       </el-icon>
       文件上传区域
+    </el-menu-item>
+    <el-menu-item index="/settings">
+     <el-icon><Tools /></el-icon>
+        科室匹配配置
     </el-menu-item>
     <el-sub-menu index="2">
       <template #title>

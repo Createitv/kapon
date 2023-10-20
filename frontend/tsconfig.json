@@ -12,6 +12,12 @@
 		"resolveJsonModule": true,
 		"allowImportingTsExtensions": true,
 
+		"baseUrl": ".",
+		"paths": {
+			"@/*": [
+				"./src/*"
+			]
+		},
 		/* Linting */
 		"strict": false,
 		"noFallthroughCasesInSwitch": true,

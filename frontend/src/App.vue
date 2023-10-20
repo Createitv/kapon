@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import ExcelFileUploader from './components/ExcelFileUploader.vue'
 import NavHeader from './components/navbar/NavHeader.vue'
 </script>
 
 <template>
-  <NavHeader />
-  <ExcelFileUploader />
+    <NavHeader/>
+    <router-view></router-view>
+  
+  <!--  <ExcelFileUploader />-->
 </template>
 
 <style scoped></style>

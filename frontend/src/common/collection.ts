@@ -513,7 +513,8 @@ export function dataMerge(dataOne: any[]) {
 				emptyObject[remainKey[i]] = 1
 				// 还有很多空的没法匹配
 			} else if (remainKey[i] === '使用部门') {
-				console.log(configStore.config[element[remainKey[i]]])
+				// 使用部门对应调换
+				// console.log(configStore.config[element[remainKey[i]]])
 				emptyObject[remainKey[i]] = configStore.config[element[remainKey[i]]]
 				// 如果key在已经有的数据中添加数据
 			} else if (keys.indexOf(remainKey[i]) !== -1) {
