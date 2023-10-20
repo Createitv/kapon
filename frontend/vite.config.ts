@@ -1,25 +1,33 @@
 /** @format */
 
 // vite.config.ts
-import { defineConfig } from 'vite'
+import {defineConfig} from 'vite'
 import vue from '@vitejs/plugin-vue'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import UnoCSS from 'unocss/vite'
-import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
-
+import {ElementPlusResolver} from 'unplugin-vue-components/resolvers'
+// @ts-ignore
+import path from 'path'
 // https://vitejs.dev/config/
 export default defineConfig({
-	plugins: [
-		vue(),
-		UnoCSS(),
+  resolve: {
+    alias: {
+      // @ts-ignore
+      "@": path.resolve(__dirname, "./src"),
 
-		AutoImport({
-			imports: ['vue'],
-			resolvers: [ElementPlusResolver()],
-		}),
-		Components({
-			resolvers: [ElementPlusResolver()],
-		}),
-	],
+    }
+  },
+  plugins: [
+    vue(),
+    UnoCSS(),
+
+    AutoImport({
+      imports: ['vue'],
+      resolvers: [ElementPlusResolver()],
+    }),
+    Components({
+      resolvers: [ElementPlusResolver()],
+    }),
+  ],
 })
