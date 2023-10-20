@@ -8,6 +8,8 @@ import { useCofigStore } from '../store/config';
 
 var excelData = {}
 const fullscreenLoading = ref(false)
+const useConfigStore = useCofigStore()
+
 
 async function onChange(file) {
   ElNotification({
@@ -52,8 +54,15 @@ async function onChange(file) {
   // defval 给空的单元格赋值为空字符串
   // header 以那一行为开头
   const data = xlsx.utils.sheet_to_json(firstWorkSheet, { blankrows: true, defval: '' })
+  data.forEach((item) => {
+    item['使用部门'] = useConfigStore.config[item['使用部门']]
+  })
+  // console.log(data);
+
   excelData = groupedData(data, "使用部门")
-  console.log(`读取所有excel数据${Object.keys(excelData).length} || ${Object.keys(excelData)}`, excelData)
+  console.log(`读取所有excel数据${Object.keys(excelData).length} ${Object.keys(excelData)}`)
+  console.log(excelData)
+
   fullscreenLoading.value = false
 }
 
@@ -88,7 +97,6 @@ function sleep(n) {
 }
 
 function exportExcel() {
-  console.log(excelData['健康管理中心'], excelData)
   Object.keys(excelData).forEach(function (key) {
     const excelWriteData = dataMerge(excelData[key])
     console.log(key, excelWriteData)
@@ -105,7 +113,6 @@ function exportExcelEx() {
 }
 
 async function loadFile() {
-  const useConfigStore = useCofigStore()
   const [hFile] = await window.showOpenFilePicker({
     types: [{
       description: 'Spreadsheets',
