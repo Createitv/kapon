@@ -2,4 +2,4 @@
 
 windows:
  	echo "Build windows"
-	wails build -platform linux/amd64
+	wails build -platform windows/amd64 --clean
