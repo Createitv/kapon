@@ -1,159 +1,169 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title><!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>编写js导出文件</title>
+  <meta charset="UTF-8">
+  <title>
+    <!DOCTYPE html>
+    <html lang="en">
 
-    <script
-      language="javascript"
-      src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"
-    ></script>
-    <script src="https://cdn.bootcdn.net/ajax/libs/babel-polyfill/7.12.1/polyfill.min.js"></script>
-    <script src="https://cdn.bootcdn.net/ajax/libs/exceljs/4.2.1/exceljs.min.js"></script>
-    <script src="https://cdn.bootcdn.net/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
-  </head>
-  <body>
-    <button id="exportDate" value="导出" onclick="exportToExcel()">导出</button>
+    <head>
+      <meta charset="UTF-8" />
+      <title>编写js导出文件</title>
 
-    <script>
-      function exportToExcel() {
-        // var newVar = $("#exportDate").val();
-        // console.log(newVar)
+      <script language="javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+      <script src="https://cdn.bootcdn.net/ajax/libs/babel-polyfill/7.12.1/polyfill.min.js"></script>
+      <script src="https://cdn.bootcdn.net/ajax/libs/exceljs/4.2.1/exceljs.min.js"></script>
+      <script src="https://cdn.bootcdn.net/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    </head>
 
-        // exportDataToExcel();
-        // getData("http://localhost:8080/postExcelData",{});
+<body>
+  <button id="exportDate" value="导出" onclick="exportToExcel()">导出</button>
 
-        let data = [
-          {
-            id: "9960",
-            name: "郭德祥0",
-            age: 20,
-            classname: "大师0班",
-            address: "广东中山0",
-          },
-          {
-            id: "9961",
-            name: "郭德祥1",
-            age: 21,
-            classname: "大师1班",
-            address: "广东中山1",
-          },
-          {
-            id: "9962",
-            name: "郭德祥2",
-            age: 22,
-            classname: "大师2班",
-            address: "广东中山2",
-          },
-          {
-            id: "9963",
-            name: "郭德祥3",
-            age: 23,
-            classname: "大师3班",
-            address: "广东中山3",
-          },
-          {
-            id: "9964",
-            name: "郭德祥4",
-            age: 24,
-            classname: "大师4班",
-            address: "广东中山4",
-          },
-          {
-            id: "9965",
-            name: "郭德祥5",
-            age: 25,
-            classname: "大师5班",
-            address: "广东中山5",
-          },
-          {
-            id: "9966",
-            name: "郭德祥6",
-            age: 26,
-            classname: "大师6班",
-            address: "广东中山6",
-          },
-          {
-            id: "9967",
-            name: "郭德祥7",
-            age: 27,
-            classname: "大师7班",
-            address: "广东中山7",
-          },
-          {
-            id: "9968",
-            name: "郭德祥8",
-            age: 28,
-            classname: "大师8班",
-            address: "广东中山8",
-          },
-          {
-            id: "9969",
-            name: "郭德祥9",
-            age: 29,
-            classname: "大师9班",
-            address: "广东中山9",
-          },
-        ];
+  <script>
+    function exportToExcel() {
+      // var newVar = $("#exportDate").val();
+      // console.log(newVar)
 
-        let headlist = {
-          id: "id",
-          name: "姓名",
-          age: "年龄",
-          classname: "班级",
-          address: "地址",
-        };
+      // exportDataToExcel();
+      // getData("http://localhost:8080/postExcelData",{});
 
-        let head = ["id", "姓名", "年龄", "班级", "地址"];
+      let data = [
+        {
+          id: "9960",
+          name: "郭德祥0",
+          age: 20,
+          classname: "大师0班",
+          address: "广东中山0",
+        },
+        {
+          id: "9961",
+          name: "郭德祥1",
+          age: 21,
+          classname: "大师1班",
+          address: "广东中山1",
+        },
+        {
+          id: "9962",
+          name: "郭德祥2",
+          age: 22,
+          classname: "大师2班",
+          address: "广东中山2",
+        },
+        {
+          id: "9963",
+          name: "郭德祥3",
+          age: 23,
+          classname: "大师3班",
+          address: "广东中山3",
+        },
+        {
+          id: "9964",
+          name: "郭德祥4",
+          age: 24,
+          classname: "大师4班",
+          address: "广东中山4",
+        },
+        {
+          id: "9965",
+          name: "郭德祥5",
+          age: 25,
+          classname: "大师5班",
+          address: "广东中山5",
+        },
+        {
+          id: "9966",
+          name: "郭德祥6",
+          age: 26,
+          classname: "大师6班",
+          address: "广东中山6",
+        },
+        {
+          id: "9967",
+          name: "郭德祥7",
+          age: 27,
+          classname: "大师7班",
+          address: "广东中山7",
+        },
+        {
+          id: "9968",
+          name: "郭德祥8",
+          age: 28,
+          classname: "大师8班",
+          address: "广东中山8",
+        },
+        {
+          id: "9969",
+          name: "郭德祥9",
+          age: 29,
+          classname: "大师9班",
+          address: "广东中山9",
+        },
+      ];
 
-        exportExcel();
+      let headlist = {
+        id: "id",
+        name: "姓名",
+        age: "年龄",
+        classname: "班级",
+        address: "地址",
+      };
+
+      let head = ["id", "姓名", "年龄", "班级", "地址"];
+
+      exportExcel();
+    }
+
+    function exportExcel() {
+      // let wb = XLSX.utils.book_new();
+
+      // 创建工作簿
+      const workbook = new ExcelJS.Workbook();
+      // 添加工作表
+      const sheet = workbook.addWorksheet("My Sheet");
+      const arr = []
+      for (let index = 0; index < 100000; index++) {
+        arr.push({ id: 1, name: "John Doe", dob: new Date(2021, 12, 16) },
+        )
       }
+      sheet.columns = [
+        { header: "Id", key: "id", width: 10 },
+        { header: "Name", key: "name", width: 32 },
+        { header: "D.O.B.", key: "DOB", width: 10, outlineLevel: 1 },
+      ];
 
-      function exportExcel() {
-        // let wb = XLSX.utils.book_new();
+      // sheet.getColumn(1).value = ['001','张三','asd'];
+      sheet.addRows(arr);
+      console.log(arr)
+      download("测试成功", workbook);
+    }
 
-        // 创建工作簿
-        const workbook = new ExcelJS.Workbook();
-        // 添加工作表
-        const sheet = workbook.addWorksheet("My Sheet");
-
-        sheet.columns = [
-          { header: "Id", key: "id", width: 10 },
-          { header: "Name", key: "name", width: 32 },
-          { header: "D.O.B.", key: "DOB", width: 10, outlineLevel: 1 },
-        ];
-
-        // sheet.getColumn(1).value = ['001','张三','asd'];
-        sheet.addRow({ id: 1, name: "John Doe", dob: new Date(2021, 12, 16) });
-
-        download("测试成功", workbook);
-      }
-
-      function download(excelFileName, workbook) {
-        return new Promise((resolve, reject) => {
-          workbook.xlsx
-            .writeBuffer()
-            .then((data) => {
-              const blob = new Blob([data], {
-                type: `application/vnd.openxmlformats-officedocument.spreadsheetml.sheet`,
-              });
-              saveAs(blob, excelFileName + ".xlsx");
-              resolve(true);
-            })
-            .catch((error) => {
-              reject(error);
+    function download(excelFileName, workbook) {
+      return new Promise((resolve, reject) => {
+        workbook.xlsx
+          .writeBuffer()
+          .then((data) => {
+            console.log(data)
+            const blob = new Blob([data], {
+              type: `application/vnd.openxmlformats-officedocument.spreadsheetml.sheet`,
             });
-        });
-      }
-    </script>
-  </body>
-</html></title>
+            saveAs(blob, excelFileName + ".xlsx");
+            resolve(true);
+          })
+          .catch((error) => {
+            reject(error);
+          });
+      });
+    }
+  </script>
+</body>
+
+</html>
+</title>
 </head>
+
 <body>
 
 </body>
+
 </html>

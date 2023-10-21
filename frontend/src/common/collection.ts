@@ -1,6 +1,5 @@
 /** @format */
 
-import { useCofigStore } from '../store/config'
 /** @format */
 
 export function groupedData(data: any[], key: string) {
@@ -12,6 +11,13 @@ export function groupedData(data: any[], key: string) {
 		result[usageDepartment].push(item)
 		return result
 	}, {})
+}
+// 数组对比去重
+export function unique(arr) {
+	return arr.filter(function (item, index, arr) {
+		//当前元素，在原始数组中的第一个索引==当前索引值，否则返回当前元素
+		return arr.indexOf(item, 0) === index
+	})
 }
 
 // const demo = [
@@ -469,7 +475,6 @@ export function groupedData(data: any[], key: string) {
 
 export function dataMerge(dataOne: any[]) {
 	let arrayMerge = []
-	const configStore = useCofigStore()
 	let rank = 1
 	const lastOneSum = {}
 	const remainKey = [
@@ -512,10 +517,10 @@ export function dataMerge(dataOne: any[]) {
 			} else if (remainKey[i] === '汇总') {
 				emptyObject[remainKey[i]] = 1
 				// 还有很多空的没法匹配
-			} else if (remainKey[i] === '使用部门') {
+			} else if (remainKey[i] === '使用部门2') {
 				// 使用部门对应调换
 				// console.log(configStore.config[element[remainKey[i]]])
-				emptyObject[remainKey[i]] = configStore.config[element[remainKey[i]]]
+				// emptyObject[remainKey[i]] = configStore.config[element[remainKey[i]]]
 				// 如果key在已经有的数据中添加数据
 			} else if (keys.indexOf(remainKey[i]) !== -1) {
 				emptyObject[remainKey[i]] = element[remainKey[i]]

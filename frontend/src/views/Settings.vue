@@ -1,13 +1,6 @@
 <script setup lang="ts">
 import { useCofigStore } from "@/store/config.ts";
-
-// 数组对比去重
-function unique(arr) {
-  return arr.filter(function (item, index, arr) {
-    //当前元素，在原始数组中的第一个索引==当前索引值，否则返回当前元素
-    return arr.indexOf(item, 0) === index;
-  });
-}
+import { unique } from '@/common/collection.ts'
 
 const configStore = useCofigStore()
 // console.log(Object.keys(configStore.config))
