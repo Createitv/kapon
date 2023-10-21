@@ -411,25 +411,25 @@ heightLightRows.forEach((item: string) => {
 })
 
 // 创建带有红色标签颜色的工作表
-export function exceljsToExcel(data: Object[], filename: string) {
+export async function exceljsToExcel(data: Object[], filename: string) {
 	worksheet.headerFooter.differentFirst = true
 	// 或者可以设置自定义内容的页眉
 	worksheet.headerFooter.firstHeader = `&L对照部门: ${filename} &C&"Arial,Regular"盘点人\n\n 填表说明: 黄色是必填项，其他部分不要修改 &R&B科主任签名\n\t&D`
 	worksheet.addRows(data)
-	download(filename, workbook).then((r) => console.log(r))
+	await download(filename, workbook)
 }
 
 async function download(excelFileName, workbook: ExcelJS.Workbook) {
 	const EXCEL_TYPE =
 		'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8'
 	let blob: Blob
-	console.log(workbook.creator)
+	// console.log(workbook.creator)
 	const buffer = await workbook.xlsx.writeBuffer()
 	console.log('buffer', buffer)
 	blob = new Blob([buffer], {
 		type: EXCEL_TYPE,
 	})
-	console.log(blob.size)
+	// console.log(blob.size)
 
 	saveAs(blob, excelFileName + '.xlsx')
 	console.log(excelFileName + '成功')
