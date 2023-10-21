@@ -30,7 +30,7 @@ async function onChange(file) {
       const reader = new FileReader() // https://developer.mozilla.org/zh-CN/docs/Web/API/FileReader
       // console.log("实例化对象有各种方法", reader);
       reader.readAsBinaryString(file.raw) // 读取raw的File文件
-      reader.onload = (ev) => {
+      reader.onload = (ev: ProgressEvent<FileReader>) => {
         // console.log("文件解析流程进度事件", ev);
         resolve(ev.target.result) // 将解析好的结果扔出去，以供使用
       }
@@ -55,12 +55,12 @@ async function onChange(file) {
   // defval 给空的单元格赋值为空字符串
   // header 以那一行为开头
   const data = xlsx.utils.sheet_to_json(firstWorkSheet, {blankrows: true, defval: ''})
- // 修改data里面使用数据为对账部门数据, 必须修改之后才可以分组
+  // data里面添加group数据 给groupedData函数分组
   data.forEach((item: Object) => {
-    item['使用部门'] = configStore.config[item['使用部门']]
+    item['group'] = configStore.config[item['使用部门']]
   })
   // 依据部门分组
-  excelData = groupedData(data, "使用部门")
+  excelData = groupedData(data, "group")
   console.log(`读取所有excel数据${Object.keys(excelData).length} || ${Object.keys(excelData)}`, excelData)
   fullscreenLoading.value = false
   showButton.value = true
@@ -85,35 +85,50 @@ function getHeaderRow(sheet) {
 }
 
 
-function exportExcel(name: string) {
+function exportOneExcel(name: string) {
   console.log("exportExcel", name, excelData);
 
   // console.log(excelData['健康管理中心'], excelData)
-  Object.keys(excelData).forEach(async (key)=> {
+  Object.keys(excelData).forEach(async (key) => {
 
     if (name === key) {
-      const excelWriteData = dataMerge(excelData[key])
+      let excelWriteData = dataMerge(excelData[key])
       //   修改对应文件名称为对照表的key
-      console.log(`${key}.xlsx 表生成成功 数据源为`,excelWriteData)
+      console.log(`${key}.xlsx 表生成成功 数据源为`, excelWriteData)
       // if (key !== 'undefined') {
       await exceljsToExcel(excelWriteData, key)
-      console.log("after write excel");
-
+      console.log("after exportOneExcel excel");
       // }
     }
   })
 }
+//
+// function exportAllFile(name: string) {
+//   console.log("exportExcel", name, excelData);
+//
+//   // console.log(excelData['健康管理中心'], excelData)
+//   Object.keys(excelData).forEach(async (key) => {
+//
+//     let excelWriteData = dataMerge(excelData[key])
+//     //   修改对应文件名称为对照表的key
+//     console.log(`${key}.xlsx 表生成成功 数据源为`, excelWriteData)
+//     // if (key !== 'undefined') {
+//     await exceljsToExcel(excelWriteData, key)
+//     console.log("after exportOneExcel excel");
+//     // }
+//   })
+// }
+
 
 function exportExcelEx() {
   ex()
 }
 
-const handleOnSuccess = () => []
 </script>
 
 <template>
     <el-upload action="#" :auto-upload="false" :on-change="onChange" :limit="1" drag accept=".xls,.xlsx"
-               :on-success="handleOnSuccess" class="m-4 mt-10">
+               class="m-4 mt-10">
         <el-icon class="el-icon--upload">
             <upload-filled/>
         </el-icon>
@@ -125,16 +140,14 @@ const handleOnSuccess = () => []
 
     <el-scrollbar max-height="200px" v-if="showButton">
         <el-button v-for="item in unique(Object.values(configStore.config))" :key="item" type="primary"
-                   @click="exportExcel(item)">导出{{ item }}表格
+                   @click="exportOneExcel(item)">导出{{ item }}表格
         </el-button>
     </el-scrollbar>
 
 
     <div class="mt-10">
         <el-button type="primary" @click="exportExcelEx" element-loading-background="rgba(192,192,192,0.3)"
-                   v-loading.fullscreen.lock="fullscreenLoading">下载测试 Excel 文件
+                   v-loading.fullscreen.lock="fullscreenLoading">下载所有文件
         </el-button>
-        <el-button type="primary">导出全部</el-button>
     </div>
-  <!--    <el-button type="primary" @click="exportExcelPDf">下载测试 PDF 文件</el-button>-->
 </template>
