@@ -19,8 +19,6 @@ declare module 'vue' {
     NavHeader: typeof import('./src/components/navbar/NavHeader.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    Select: typeof import('./src/components/Setting/Select.vue')['default']
-    Select2: typeof import('./src/components/Setting/Select2.vue')['default']
     SelectV: typeof import('./src/components/Setting/SelectV.vue')['default']
   }
   export interface ComponentCustomProperties {

@@ -1,6 +1,6 @@
 <template>
-  <el-select v-model="value" class="m-2" placeholder="打字检索" size="large" filterable autocomplete @change="handleChage"
-    @click="visibleChange">
+  <el-select v-model="value" class="m-2" placeholder="打字检索" size="large" filterable autocomplete="true"
+    @change="handleChage" @click="visibleChange">
     <el-option v-for="item in options.slice(0, showOptionsCount)" :key="item.value" :label="item.label"
       :value="item.value" />
   </el-select>
@@ -15,16 +15,14 @@ import { setLocalStorageKey } from '../../common/parser';
 const configStore = useCofigStore()
 const showOptionsCount = ref(0)
 const props = defineProps({
-  configKey: {
-    type: String
-  }
+  configKey: String,
 })
-const configKey = props.configKey
+const cfigKey = props.configKey
 function visibleChange() {
   showOptionsCount.value = options.length
 }
 function handleChage() {
-  setLocalStorageKey(configKey, value.value)
+  setLocalStorageKey(cfigKey, value.value)
 }
 
 const value = ref('')
