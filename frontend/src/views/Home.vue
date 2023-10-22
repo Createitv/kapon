@@ -145,7 +145,7 @@ function exportExcelEx() {
     </el-scrollbar>
 
 
-    <div class="mt-10">
+    <div class="mt-10" v-show="false">
         <el-button type="primary" @click="exportExcelEx" element-loading-background="rgba(192,192,192,0.3)"
                    v-loading.fullscreen.lock="fullscreenLoading">下载所有文件
         </el-button>

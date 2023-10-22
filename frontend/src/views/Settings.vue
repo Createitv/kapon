@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import {useCofigStore} from "@/store/config.ts";
+import { useCofigStore } from "@/store/config.ts";
 import SelectV from "@/components/Setting/SelectV.vue";
 
 const configStore = useCofigStore()
+
 
 </script>
 
@@ -10,7 +11,7 @@ const configStore = useCofigStore()
     <el-scrollbar height="1000px">
         <div v-for="item in Object.keys(configStore.config)" :key="item" class="scrollbar-demo-item">{{ item }} :
             {{ configStore.config[item] }}
-            <SelectV></SelectV>
+            <SelectV :config-key="item"></SelectV>
         </div>
     </el-scrollbar>
 </template>
