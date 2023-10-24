@@ -34,7 +34,7 @@ function handleSelect(key: string, keyPath: string[]) {
       <img class="" style="width: 100px" src="/src/assets/wails.png" alt="Element logo">
     </el-menu-item>
     <div class="flex-grow" />
-    <el-menu-item index="/home">
+    <el-menu-item index="/">
       <el-icon>
         <location />
       </el-icon>
