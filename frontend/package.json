@@ -1,5 +1,5 @@
 {
-	"name": "hospital",
+	"name": "kapon",
 	"type": "module",
 	"version": "0.0.1",
 	"private": true,
@@ -14,32 +14,38 @@
 	"dependencies": {
 		"@element-plus/icons-vue": "^2.1.0",
 		"@vueuse/core": "^10.5.0",
-		"core-js": "^3.33.1",
 		"element-plus": "^2.4.0",
-		"exceljs": "^4.4.0",
+		"core-js": "^3.33.1",
 		"file-saver": "^2.0.5",
 		"handsontable": "^13.1.0",
-		"jspdf": "^2.5.1",
-		"jspdf-autotable": "^3.7.0",
 		"pinia": "^2.1.6",
 		"pinia-plugin-persistedstate": "^3.2.0",
 		"vue": "^3.3.4",
-		"vue-router": "4",
-		"vxe-table": "^4.5.13",
-		"vxe-table-plugin-export-pdf": "^3.1.0",
-		"xe-utils": "^3.5.13",
-		"xlsx": "^0.18.5"
+		"vue-router": "4"
 	},
 	"devDependencies": {
+		"@antfu/eslint-config": "1.0.0-beta.28",
 		"@types/file-saver": "^2.0.6",
 		"@unocss/preset-wind": "^0.56.5",
 		"@vicons/ionicons5": "^0.12.0",
 		"@vitejs/plugin-vue": "^4.2.3",
+		"eslint": "^8.52.0",
+		"lint-staged": "^15.0.2",
+		"simple-git-hooks": "^2.9.0",
 		"typescript": "^5.0.2",
 		"unocss": "^0.56.5",
 		"unplugin-auto-import": "^0.16.6",
 		"unplugin-vue-components": "^0.25.2",
 		"vite": "^4.4.5",
 		"vue-tsc": "^1.8.5"
-	}
+	},
+	"simple-git-hooks": {
+		"pre-commit": "pnpm lint-staged"
+	},
+	"lint-staged": {
+		"*": "eslint --fix"
+	},
+	"eslintIgnore": [
+		"shims-vue.d.ts"
+	]
 }
